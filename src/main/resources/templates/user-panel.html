@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User panel</title>
+</head>
+<body>
+    <h1 th:text="|Witaj ${#authentication.getName()}|">Witaj userName</h1>
+    <p> Twoja rola to User</p>
+    <a th:href="@{/}">Strona główna</a>
+    <a th:href="@{/logout}">Wyloguj się</a>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pl"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona główna</title>
+</head>
+<body>
+    <h1>Strona główna</h1>
+    <a th:if="${#authentication.getName().equals('anonymousUser')}"
+       th:href="@{/login}">Zaloguj się
+    </a>
+    </br>
+    <a th:if="!${#authentication.getName().equals('anonymousUser')}"
+       th:href="@{/logout}">Wyloguj się
+    </a>
+    <a href="#" th:href="@{/register}">Zarejestruj się</a>
+    </br>
+    <a href="#" th:href="@{/my-panel}"> Mój panel </a>
+</body>
+</html>
