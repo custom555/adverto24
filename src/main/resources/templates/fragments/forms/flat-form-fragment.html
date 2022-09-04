@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="p-0" th:fragment="form-fragment">
+    <div class="mb-3">
+        <label for="priceInput" class="form-label">Cena [zł]</label>
+        <input type="number" step="0.01" min="0.01" class="form-control" id="priceInput" th:field="*{price}" required>
+        <div class="invalid-feedback">To pole jest wymagane</div>
+    </div>
+    <div class="mb-3">
+        <label for="areaInput" class="form-label">Powierzchnia</label>
+        <input type="number" min="25" class="form-control" id="areaInput" th:field="*{area}">
+    </div>
+    <div class="mb-3">
+        <label for="roomCountInput" class="form-label">Liczba pokoi</label>
+        <input type="number" min="1" class="form-control" id="roomCountInput" th:field="*{roomCount}">
+    </div>
+</div>
+</body>
+</html>

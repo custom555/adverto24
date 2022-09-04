@@ -1,0 +1,12 @@
+INSERT INTO subcategory(name,url,category_id) VALUES ('Sprzęt audio','sprzet_audio',1);
+INSERT INTO subcategory(name,url,category_id) VALUES ('Telefony','telefony',1);
+INSERT INTO subcategory(name,url,category_id) VALUES ('Ubrania damskie','ubrania_damskie',2);
+INSERT INTO subcategory(name,url,category_id) VALUES ('Ubrania męskie','ubrania_meskie',2);
+INSERT INTO subcategory(name,url,category_id) VALUES ('Meble','meble',3);
+INSERT INTO subcategory(name,url,category_id) VALUES ('Narzędzia','narzedzia',3);
+INSERT INTO subcategory(name,url,category_id) VALUES ('Samochody osobowe','samochody_osobowe',4);
+INSERT INTO subcategory(name,url,category_id) VALUES ('Motocykle','motocykle',4);
+INSERT INTO subcategory(name,url,category_id) VALUES ('Mieszkania','mieszkania',5);
+INSERT INTO subcategory(name,url,category_id) VALUES ('Domy','domy',5);
+INSERT INTO subcategory(name,url,category_id) VALUES ('IT','it',6);
+INSERT INTO subcategory(name,url,category_id) VALUES ('Edukacja','edukacja',6);

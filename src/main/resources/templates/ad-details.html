@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pl"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="|Adverto24 - ${advertisement.name}|">Adverto24 - Ogłoszenia lokalne</title>
+</head>
+<body>
+    <div class="container">
+        <main class="container" layout:fragment="content">
+            <div class="d-flex mt-3 mb-3">
+                <div class="container col-md-8">
+                    <img
+                            src="../../static/img/placeholder.jpg"
+                            th:src="${advertisement.img ne null} ? @{|/img/${advertisement.img}|} : @{/img/placeholder.jpg}"
+                            alt="advertisement img"
+                            class="img-thumbnail"
+                            max-width="100%"
+                    />
+                    <div class="bg-light mt-3">
+                        <div class="container pt-3">
+                            <h3 class="display-4" th:text="${advertisement.name}">
+                                Samochód osobowy
+                            </h3>
+                        </div>
+                        <div class="container pt-3" th:if="${advertisement.price ne null}">
+                            <h2 class="fw-bold" th:text="|${advertisement.price} zł|">
+                                200 zł
+                            </h2>
+                        </div>
+                        <div class="container pt-3">
+                            <h3>OPIS</h3>
+                        </div>
+                        <div class="container pt-3 pb-3">
+                            <p th:text="${advertisement.body}"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container col-md-4">
+                    <div class="container bg-light pt-1 pb-1 mb-2">
+                        <div>
+                            <h4>Użytkownik</h4>
+                            <a href="#" th:href="@{|/user/${advertisement.ownerId}|}">
+                                <span>
+                                    <i class="fa-solid fa-user"></i>
+                                    <span th:text="${owner.firstName}">
+                                        Paweł
+                                    </span>
+                                </span>
+
+                            </a>
+                            <div class="pt-1">
+                                <h6>Kontakt</h6>
+                                <span>
+                                    <i class="fa-solid fa-phone-volume"></i>
+                                    <span th:text="${owner.telephoneNo}">666 666 666</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container bg-light pt-1 pb-1 mb-2">
+                        <div>
+                            <h4>Lokalizacja</h4>
+                            <span>
+                                <i class="fa-solid fa-city"></i>
+                                <span th:text="${owner.city}">Warszawa</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="p-0" th:fragment="search-bar">
+    <div class="p-5 bg-light">
+        <h4>Filtry</h4>
+        <form th:action="@{|/${url}/search|}">
+            <div class="d-flex">
+                <div class = "d-flex col-md-11">
+                    <div class="me-4" th:if="${title == 'Mieszkania'}">
+                        <label>Liczba pokoi</label>
+                        <div class="d-flex">
+                            <input class="form-control me-1" type="number" min="1" max="10"
+                                   placeholder="Od" id ="roomCountBottom" th:name="roomCountBottom">
+                            <input class="form-control me-1" type="number" min="1" max="10"
+                                   placeholder="Do" id ="roomCountTop" th:name="roomCountTop">
+                        </div>
+                    </div>
+                    <div class="me-4" th:if="${title == 'Domy'}">
+                        <label>Liczba pięter</label>
+                        <div class="d-flex">
+                            <input class="form-control me-1" type="number" min="1" max="5"
+                                   placeholder="Od" id ="floorCountBottom" th:name="floorCountBottom">
+                            <input class="form-control me-1" type="number" min="1" max="5"
+                                   placeholder="Do" id ="floorCountTop" th:name="floorCountTop">
+                        </div>
+                    </div>
+                    <div class="me-4">
+                        <label>Powierzchnia</label>
+                        <div class="d-flex">
+                            <input class="form-control me-1" type="number" min="0" placeholder="Od"
+                                   id ="areaBottom" th:name="areaBottom">
+                            <input class="form-control me-1" type="number" min="0" placeholder="Do"
+                                   id ="areaTop" th:name="areaTop">
+                        </div>
+                    </div>
+                    <div class="me-4">
+                        <label>Cena</label>
+                        <div class="d-flex">
+                            <input class="form-control me-1" type="number" min="0" placeholder="Od"
+                                   id ="priceRangeBottom" th:name="priceRangeBottom">
+                            <input class="form-control me-1" type="number" min="0" placeholder="Do"
+                                   id ="priceRangeToop" th:name="priceRangeTop">
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex align-items-end justify-content-end col-md-1">
+                    <button type="submit" class="btn btn-outline-dark">Wyszukaj</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

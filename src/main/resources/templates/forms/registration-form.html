@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Zaloguj się</title>
+</head>
+<body>
+<div class="container">
+    <main class="container" layout:fragment="content" >
+        <div class="container col-md-3 mt-3 mb-3">
+            <div class=" d-flex justify-content-between">
+                <a href="#" th:href="@{/login}">
+                    <button type="submit" class="btn btn-outline-dark">Zaloguj się</button>
+                </a>
+                <div></div>
+                <button type="submit" class="btn btn-dark">Rejestracja</button>
+            </div>
+        </div>
+        <div class="mb-3">
+            <form method="post" th:action="@{/register}" th:object="${user}" class="was-validated">
+                <div class=" d-flex justify-content-center">
+                    <div class="container col-md-3">
+                        <div class="mb-3">
+                            <label for="emailInput" class="form-label">Adres e-mail</label>
+                            <input type="email" class="form-control" id="emailInput" th:field="*{email}" required>
+                            <div class="invalid-feedback">To pole jest wymagane</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="passwordInput" class="form-label">Hasło</label>
+                            <input type="password" class="form-control" id="passwordInput" th:field="*{password}" required>
+                            <div class="invalid-feedback">To pole jest wymagane</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="firstNameInput" class="form-label">Imię</label>
+                            <input type="text" class="form-control" id="firstNameInput" th:field="*{firstName}" required>
+                            <div class="invalid-feedback">To pole jest wymagane</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="lastNameInput" class="form-label">Nazwisko</label>
+                            <input type="text" class="form-control" id="lastNameInput" th:field="*{lastName}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="telephoneNoInput" class="form-label">Numer telefonu</label>
+                            <input type="text" class="form-control" id="telephoneNoInput" th:field="*{telephoneNo}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="cityInput" class="form-label">Miasto</label>
+                            <input type="text" class="form-control" id="cityInput" th:field="*{city}">
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-outline-dark btn-block">Zarejestruj się</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="p-0" th:fragment="form-fragment">
+    <div class="mb-3">
+        <label for="workFromHome">Praca zdalna</label>
+        <select class=" form-select me-2" id="workFromHome" th:field="*{workFromHome}" required>
+            <option th:value="true">Tak</option>
+            <option th:value="false">Nie</option>
+        </select>
+        <div class="invalid-feedback">To pole jest wymagane</div>
+    </div>
+    <div class="mb-3">
+        <label for="workingTime" class="form-label">Tryb pracy</label>
+        <select class=" form-select me-2" id="workingTime" th:field="*{workingTime}">
+            <option selected value="empty" hidden>Wybierz tryb pracy</option>
+            <option th:each="workingTime: ${workingTimeList}" th:value="${workingTime}" th:text="${workingTime.name}"></option>
+        </select>
+    </div>
+</div>
+</body>
+</html>

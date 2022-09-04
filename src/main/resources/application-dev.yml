@@ -8,4 +8,18 @@ spring:
   liquibase:
     contexts: dev
     change-log: classpath:db/changelog/master.xml
+  web:
+    resources:
+      static-locations: classpath:/static/,file:./uploads
+  servlet:
+    multipart:
+      max-file-size: 15MB
+      max-request-size: 15MB
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+app:
+  storage:
+    location: ./uploads/
 

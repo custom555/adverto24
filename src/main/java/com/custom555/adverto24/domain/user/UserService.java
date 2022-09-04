@@ -1,7 +1,7 @@
 package com.custom555.adverto24.domain.user;
 
 import com.custom555.adverto24.domain.user.dto.UserCredentialsDto;
-import com.custom555.adverto24.domain.user.dto.UserCredentialsDtoMapper;
+import com.custom555.adverto24.domain.user.dto.UserDtoMapper;
 import com.custom555.adverto24.domain.user.dto.UserRegistrationDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,7 +21,7 @@ public class UserService {
 
     public Optional<UserCredentialsDto> findCredentialsByEmail(String email){
         return userRepository.findByEmail(email)
-                .map(UserCredentialsDtoMapper::map);
+                .map(UserDtoMapper::mapToCredentialsDto);
     }
     @Transactional
     public void deleteUserByEmail(String email){
@@ -41,6 +41,8 @@ public class UserService {
         user.setFirstName(registration.getFirstName());
         user.setLastName(registration.getLastName());
         user.setEmail(registration.getEmail());
+        user.setTelephoneNo(registration.getTelephoneNo());
+        user.setCity(registration.getCity());
         String passwordHash = passwordEncoder.encode(registration.getPassword());
         user.setPassword(passwordHash);
         Optional<UserRole> userRole = userRoleRepository.findByName("USER");
@@ -48,5 +50,10 @@ public class UserService {
             throw new NoSuchElementException();
         });
         userRepository.save(user);
+    }
+
+    public Optional<UserRegistrationDto> findUserById(Long id) {
+        return userRepository.findById(id)
+                .map(UserDtoMapper::mapToRegistrationDto);
     }
 }

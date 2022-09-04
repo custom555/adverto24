@@ -1,7 +1,7 @@
-INSERT INTO category(name,img_url) VALUES('Elektronika','electronics.jpg');
-INSERT INTO category(name,img_url) VALUES('Moda','fashion.jpg');
-INSERT INTO category(name,img_url) VALUES('Ogród','garden.jpg');
-INSERT INTO category(name,img_url) VALUES('Motoryzacja','moto.jpg');
-INSERT INTO category(name,img_url) VALUES('Nieruchomości','real-estate.jpg');
-INSERT INTO category(name,img_url) VALUES('Praca','work.jpg');
+INSERT INTO category(name,url,img_name) VALUES('Elektronika','elektronika','electronics.jpg');
+INSERT INTO category(name,url,img_name) VALUES('Moda','moda','fashion.jpg');
+INSERT INTO category(name,url,img_name) VALUES('Dom i ogród','dom_ogrod','garden.jpg');
+INSERT INTO category(name,url,img_name) VALUES('Motoryzacja','motoryzacja','moto.jpg');
+INSERT INTO category(name,url,img_name) VALUES('Nieruchomości','nieruchomosci','real-estate.jpg');
+INSERT INTO category(name,url,img_name) VALUES('Praca','praca','work.jpg');
 

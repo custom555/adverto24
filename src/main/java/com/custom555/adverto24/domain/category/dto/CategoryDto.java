@@ -4,11 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@AllArgsConstructor
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
+@AllArgsConstructor
 public class CategoryDto {
-    private Long id;
     private String name;
-    private String imgUrl;
+    private String imgName;
+    private String url;
+    private List<SubcategoryDto> subcategories = new ArrayList<>();
+
 }

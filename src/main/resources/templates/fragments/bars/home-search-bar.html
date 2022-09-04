@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<div class="p-0" th:fragment="search-bar">
+  <div class="p-5 bg-light">
+    <h4>Filtry</h4>
+    <form th:action="@{|/${url}/search|}">
+      <div class="d-flex">
+        <div class = "d-flex col-md-11">
+          <div class="me-4">
+            <label for="state">Stan</label>
+            <select class=" form-select me-2" id="state" th:name="state">
+              <option selected value="" hidden>Wybierz stan</option>
+              <option value="" text="Dowolny">Dowolny</option>
+              <option th:each="state: ${stateList}" th:value="${state}" th:text="${state.name}"></option>
+            </select>
+          </div>
+          <div class="me-4">
+            <label for="type">Typ</label>
+            <select class=" form-select me-2" id="type" th:name="type">
+              <option selected value="" hidden>Wybierz typ</option>
+              <option value="" text="Dowolny">Dowolny</option>
+              <option th:each="type: ${typeList}" th:value="${type}" th:text="${type.name}"></option>
+            </select>
+          </div>
+          <div class="me-4">
+            <label>Cena</label>
+            <div class="d-flex">
+              <input class="form-control me-1" type="number" min="0" placeholder="Od"
+                     id ="priceRangeBottom" th:name="priceRangeBottom">
+              <input class="form-control me-1" type="number" min="0" placeholder="Do"
+                     id ="priceRangeToop" th:name="priceRangeTop">
+            </div>
+          </div>
+        </div>
+        <div class="d-flex align-items-end justify-content-end col-md-1">
+          <button type="submit" class="btn btn-outline-dark">Wyszukaj</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
+    <changeSet id="0003-1" author="krzysztof.kaszewski">
+        <createTable tableName="advertisement">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(100)"/>
+            <column name="body" type="VARCHAR(10000)"/>
+            <column name="created" type="DATE"/>
+            <column name="promoted" type="BOOLEAN"/>
+            <column name="img" type="VARCHAR(200)"/>
+            <column name="ad_type" type="VARCHAR(100)"/>
+
+            <column name="price" type="DOUBLE"/>
+<!--            general enums-->
+            <column name="state" type="VARCHAR(100)"/>
+<!--            moto-->
+            <column name="car_brand" type="VARCHAR(100)"/>
+            <column name="motorbike_brand" type="VARCHAR(100)"/>
+            <column name="mileage" type="INT"/>
+            <column name="engine_power" type="INT"/>
+            <column name="prod_year" type="INT"/>
+<!--            fashion-->
+            <column name="fashion_brand" type="VARCHAR(100)"/>
+            <column name="size" type="VARCHAR(3)"/>
+<!--            home and garden-->
+            <column name="tool_type" type="VARCHAR(100)"/>
+            <column name="furniture_type" type="VARCHAR(100)"/>
+<!--            real estate-->
+            <column name="area" type="INT"/>
+            <column name="floor_count" type="INT"/>
+            <column name="room_count" type="INT"/>
+<!--            work-->
+            <column name="work_from_home" type="BOOLEAN"/>
+            <column name="working_time" type="VARCHAR(100)"/>
+<!--            foreign keys-->
+            <column name="owner_id" type="BIGINT">
+                <constraints
+                    nullable="false"
+                    foreignKeyName="fk_advertisement_owner"
+                    referencedTableName="application_user"
+                    referencedColumnNames="id"
+                    primaryKeyName="pk_advertisement"
+                />
+            </column>
+            <column name="subcategory_id" type="BIGINT">
+                <constraints
+                        nullable="false"
+                        foreignKeyName="fk_advertisement_subcategory"
+                        referencedTableName="subcategory"
+                        referencedColumnNames="id"
+                        primaryKeyName="pk_advertisement"
+                />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
