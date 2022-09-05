@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -68,7 +69,7 @@ public class MotorbikeAdService {
     private List<MotorbikeAdDto> mapToDto(Collection<MotorbikeAd> collection){
         return collection.stream()
                 .map(MotorbikeAdDtoMapper::toDto)
-                .toList();
+                .collect(Collectors.toList());
     }
     private Set<MotorbikeAd> stateSearch(State state){
         if(state != null) {

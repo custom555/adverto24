@@ -1,6 +1,5 @@
 package com.custom555.adverto24.web.advertisement.audio;
 
-import com.custom555.adverto24.domain.advertisement.category.electronics.audio.dto.AudioAdDto;
 import com.custom555.adverto24.domain.advertisement.category.electronics.telephone.TelephoneAdService;
 import com.custom555.adverto24.domain.advertisement.category.electronics.telephone.dto.TelephoneAdDto;
 import com.custom555.adverto24.domain.advertisement.enums.State;
@@ -19,6 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -63,7 +63,7 @@ public class TelephoneAdController {
     }
 
     private void addConstAttributesToModel(Model model){
-        List<State> stateList = Arrays.stream(State.values()).toList();
+        List<State> stateList = Arrays.stream(State.values()).collect(Collectors.toList());
         model.addAttribute("stateList",stateList);
         model.addAttribute("title","Telefony");
         model.addAttribute("fragment_name","electronics-search-bar");

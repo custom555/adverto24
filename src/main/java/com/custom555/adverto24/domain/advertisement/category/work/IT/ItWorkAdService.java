@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -46,7 +47,7 @@ public class ItWorkAdService {
     private List<ItWorkAdDto> mapToDto(Collection<ItWorkAd> collection){
         return collection.stream()
                 .map(ItWorkAdDtoMapper::toDto)
-                .toList();
+                .collect(Collectors.toList());
     }
     private Set<ItWorkAd> workingTimeSearch(WorkingTime workingTime){
         if(workingTime != null) {

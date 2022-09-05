@@ -1,12 +1,8 @@
 package com.custom555.adverto24.web.advertisement.moto;
 
-import com.custom555.adverto24.domain.advertisement.category.fashion.men.dto.MensClothesAdDto;
-import com.custom555.adverto24.domain.advertisement.category.home_garden.tool.dto.ToolAdDto;
 import com.custom555.adverto24.domain.advertisement.category.moto.car.CarAdService;
 import com.custom555.adverto24.domain.advertisement.category.moto.car.dto.CarAdDto;
 import com.custom555.adverto24.domain.advertisement.enums.CarBrand;
-import com.custom555.adverto24.domain.advertisement.enums.FashionBrand;
-import com.custom555.adverto24.domain.advertisement.enums.Size;
 import com.custom555.adverto24.domain.advertisement.enums.State;
 import com.custom555.adverto24.domain.user.UserService;
 import com.custom555.adverto24.domain.user.dto.UserRegistrationDto;
@@ -23,6 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -79,10 +76,10 @@ public class CarAdController {
         return "ad-details";
     }
     private void addConstAttributesToModel(Model model){
-        List<State> stateList = Arrays.stream(State.values()).toList();
+        List<State> stateList = Arrays.stream(State.values()).collect(Collectors.toList());
         model.addAttribute("stateList",stateList);
 
-        List<CarBrand> brandList = Arrays.stream(CarBrand.values()).toList();
+        List<CarBrand> brandList = Arrays.stream(CarBrand.values()).collect(Collectors.toList());
         model.addAttribute("brandList",brandList);
 
         model.addAttribute("title","Samochody");

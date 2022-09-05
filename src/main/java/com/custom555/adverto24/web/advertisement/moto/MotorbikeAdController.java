@@ -19,6 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -77,10 +78,10 @@ public class MotorbikeAdController {
         return "ad-details";
     }
     private void addConstAttributesToModel(Model model){
-        List<State> stateList = Arrays.stream(State.values()).toList();
+        List<State> stateList = Arrays.stream(State.values()).collect(Collectors.toList());
         model.addAttribute("stateList",stateList);
 
-        List<MotorbikeBrand> brandList = Arrays.stream(MotorbikeBrand.values()).toList();
+        List<MotorbikeBrand> brandList = Arrays.stream(MotorbikeBrand.values()).collect(Collectors.toList());
         model.addAttribute("brandList",brandList);
 
         model.addAttribute("title","Motocykle");

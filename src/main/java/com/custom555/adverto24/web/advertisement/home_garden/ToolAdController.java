@@ -19,6 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -62,10 +63,10 @@ public class ToolAdController {
         return "ad-details";
     }
     private void addConstAttributesToModel(Model model){
-        List<State> stateList = Arrays.stream(State.values()).toList();
+        List<State> stateList = Arrays.stream(State.values()).collect(Collectors.toList());
         model.addAttribute("stateList",stateList);
 
-        List<ToolType> typeList = Arrays.stream(ToolType.values()).toList();
+        List<ToolType> typeList = Arrays.stream(ToolType.values()).collect(Collectors.toList());
         model.addAttribute("typeList",typeList);
 
         model.addAttribute("title","Narzędzia");

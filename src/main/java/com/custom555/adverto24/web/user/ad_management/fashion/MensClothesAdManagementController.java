@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -44,13 +45,13 @@ public class MensClothesAdManagementController {
         List<CategoryDto> categories = categoryService.findAllCategories();
         model.addAttribute("categories",categories);
 
-        List<State> stateList = Arrays.stream(State.values()).toList();
+        List<State> stateList = Arrays.stream(State.values()).collect(Collectors.toList());
         model.addAttribute("stateList",stateList);
 
-        List<Size> sizeList = Arrays.stream(Size.values()).toList();
+        List<Size> sizeList = Arrays.stream(Size.values()).collect(Collectors.toList());
         model.addAttribute("sizeList",sizeList);
 
-        List<FashionBrand> brandList = Arrays.stream(FashionBrand.values()).toList();
+        List<FashionBrand> brandList = Arrays.stream(FashionBrand.values()).collect(Collectors.toList());
         model.addAttribute("brandList",brandList);
 
         MensClothesAdSaveDto adSaveDto = new MensClothesAdSaveDto();

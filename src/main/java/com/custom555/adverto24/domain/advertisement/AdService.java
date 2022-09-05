@@ -1,11 +1,11 @@
 package com.custom555.adverto24.domain.advertisement;
 
-import com.custom555.adverto24.domain.advertisement.category.electronics.telephone.dto.TelephoneAdSaveDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -25,7 +25,7 @@ public class AdService {
         return collection
                 .stream()
                 .map(ad -> AdDtoMapper.toDto(ad,new AdDto()))
-                .toList();
+                .collect(Collectors.toList());
     }
     public List<AdDto> findAllAdsByOwnerEmail(String email) {
         List<Ad> adList = adRepository.findAllByOwner_email(email);

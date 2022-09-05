@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -41,7 +42,7 @@ public class ItWorkAdManagementController {
     private void addAttributesToModel(Model model){
         List<CategoryDto> categories = categoryService.findAllCategories();
         model.addAttribute("categories",categories);
-        List<WorkingTime> workingTimeList = Arrays.stream(WorkingTime.values()).toList();
+        List<WorkingTime> workingTimeList = Arrays.stream(WorkingTime.values()).collect(Collectors.toList());
         model.addAttribute("workingTimeList",workingTimeList);
 
         ItWorkAdSaveDto adSaveDto = new ItWorkAdSaveDto();

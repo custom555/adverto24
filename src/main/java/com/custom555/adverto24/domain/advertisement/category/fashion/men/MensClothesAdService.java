@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -59,7 +60,7 @@ public class MensClothesAdService {
     private List<MensClothesAdDto> mapToDto(Collection<MensClothesAd> collection){
         return collection.stream()
                 .map(MensClothesAdDtoMapper::toDto)
-                .toList();
+                .collect(Collectors.toList());
     }
     private Set<MensClothesAd> stateSearch(State state){
         if(state != null) {

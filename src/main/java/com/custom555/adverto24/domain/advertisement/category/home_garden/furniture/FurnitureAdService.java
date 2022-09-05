@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -53,7 +54,7 @@ public class FurnitureAdService {
     private List<FurnitureAdDto> mapToDto(Collection<FurnitureAd> collection){
         return collection.stream()
                 .map(FurnitureAdDtoMapper::toDto)
-                .toList();
+                .collect(Collectors.toList());
     }
     private Set<FurnitureAd> stateSearch(State state){
         if(state != null) {

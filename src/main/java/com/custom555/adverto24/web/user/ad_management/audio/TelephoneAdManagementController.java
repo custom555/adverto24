@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -42,7 +43,7 @@ public class TelephoneAdManagementController {
         List<CategoryDto> categories = categoryService.findAllCategories();
         model.addAttribute("categories",categories);
 
-        List<State> stateList = Arrays.stream(State.values()).toList();
+        List<State> stateList = Arrays.stream(State.values()).collect(Collectors.toList());
         model.addAttribute("stateList",stateList);
 
         TelephoneAdSaveDto adSaveDto = new TelephoneAdSaveDto();

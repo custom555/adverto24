@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -53,7 +54,7 @@ public class FlatAdService {
     private List<FlatAdDto> mapToDto(Collection<FlatAd> collection){
         return collection.stream()
                 .map(FlatAdDtoMapper::toDto)
-                .toList();
+                .collect(Collectors.toList());
     }
     private Set<FlatAd> areaSearch(Integer areaBottom, Integer areaTop){
         if(areaBottom != null & areaTop != null){

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -43,10 +44,10 @@ public class ToolAdManagementController {
         List<CategoryDto> categories = categoryService.findAllCategories();
         model.addAttribute("categories",categories);
 
-        List<State> stateList = Arrays.stream(State.values()).toList();
+        List<State> stateList = Arrays.stream(State.values()).collect(Collectors.toList());
         model.addAttribute("stateList",stateList);
 
-        List<ToolType> typeList = Arrays.stream(ToolType.values()).toList();
+        List<ToolType> typeList = Arrays.stream(ToolType.values()).collect(Collectors.toList());
         model.addAttribute("typeList",typeList);
 
         ToolAdSaveDto adSaveDto = new ToolAdSaveDto();

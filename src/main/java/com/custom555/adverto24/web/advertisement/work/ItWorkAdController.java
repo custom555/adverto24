@@ -1,8 +1,7 @@
-package com.custom555.adverto24.web.advertisement.edu;
+package com.custom555.adverto24.web.advertisement.work;
 
-import com.custom555.adverto24.domain.advertisement.category.work.education.EduWorkAd;
-import com.custom555.adverto24.domain.advertisement.category.work.education.EduWorkAdService;
-import com.custom555.adverto24.domain.advertisement.category.work.education.dto.EduWorkAdDto;
+import com.custom555.adverto24.domain.advertisement.category.work.IT.ItWorkAdService;
+import com.custom555.adverto24.domain.advertisement.category.work.IT.dto.ItWorkAdDto;
 import com.custom555.adverto24.domain.advertisement.enums.WorkingTime;
 import com.custom555.adverto24.domain.user.UserService;
 import com.custom555.adverto24.domain.user.dto.UserRegistrationDto;
@@ -19,18 +18,19 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/praca/edukacja")
-public class EduWorkAdController {
-    private final EduWorkAdService adService;
+@RequestMapping("/praca/it")
+public class ItWorkAdController {
+    private final ItWorkAdService adService;
     private final UserService userService;
 
     @GetMapping
-    public String getEduWorkAdList(Model model){
-        List<EduWorkAdDto> eduWorkAds = adService.findAllEduWorkAds();
-        model.addAttribute("advertisements",eduWorkAds);
+    public String getItWorkAdList(Model model){
+        List<ItWorkAdDto> itWorkAds = adService.findAllItWorkAds();
+        model.addAttribute("advertisements",itWorkAds);
         addConstAttributesToModel(model);
         return "listings/advertisement-listing";
     }
@@ -40,30 +40,30 @@ public class EduWorkAdController {
             @RequestParam(value="workFromHome",required = false) Boolean workFromHome,
             Model model
     ){
-        List<EduWorkAdDto> eduWorkAds = adService.findEduWorkAdsByParams(workingTime,workFromHome);
-        model.addAttribute("advertisements",eduWorkAds);
+        List<ItWorkAdDto> itWorkAds = adService.findItWorkAdsByParams(workingTime,workFromHome);
+        model.addAttribute("advertisements",itWorkAds);
         addConstAttributesToModel(model);
 
         return "listings/advertisement-listing";
     }
     @GetMapping("/{id}")
-    public String getEduWorkAd(@PathVariable long id, Model model){
-        Optional<EduWorkAdDto> optionalEduWorkAd = adService.findEduWorkAdById(id);
-        if(optionalEduWorkAd.isPresent()){
-            EduWorkAdDto eduWorkAd = optionalEduWorkAd.get();
-            Optional<UserRegistrationDto> optionalUser = userService.findUserById(eduWorkAd.getOwnerId());
+    public String getItWorkAd(@PathVariable long id, Model model){
+        Optional<ItWorkAdDto> optionalItWorkAd = adService.findItWorkAdById(id);
+        if(optionalItWorkAd.isPresent()){
+            ItWorkAdDto itWorkAd = optionalItWorkAd.get();
+            Optional<UserRegistrationDto> optionalUser = userService.findUserById(itWorkAd.getOwnerId());
             optionalUser.ifPresent(user -> model.addAttribute("owner",user));
-            model.addAttribute("advertisement",eduWorkAd);
+            model.addAttribute("advertisement",itWorkAd);
         }else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         return "ad-details";
     }
     private void addConstAttributesToModel(Model model){
-        List<WorkingTime> workingTimeList = Arrays.stream(WorkingTime.values()).toList();
+        List<WorkingTime> workingTimeList = Arrays.stream(WorkingTime.values()).collect(Collectors.toList());
         model.addAttribute("workingTimeList",workingTimeList);
-        model.addAttribute("title","Edukacja");
+        model.addAttribute("title","IT");
         model.addAttribute("fragment_name","work-search-bar");
-        model.addAttribute("url","praca/edukacja");
+        model.addAttribute("url","praca/it");
     }
 }

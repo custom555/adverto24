@@ -2,7 +2,6 @@ package com.custom555.adverto24.web.user.ad_management.work;
 
 import com.custom555.adverto24.domain.advertisement.category.work.education.EduWorkAdService;
 import com.custom555.adverto24.domain.advertisement.category.work.education.dto.EduWorkAdSaveDto;
-import com.custom555.adverto24.domain.advertisement.enums.State;
 import com.custom555.adverto24.domain.advertisement.enums.WorkingTime;
 import com.custom555.adverto24.domain.category.CategoryService;
 import com.custom555.adverto24.domain.category.dto.CategoryDto;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -42,7 +42,7 @@ public class EduWorkAdManagementController {
     private void addAttributesToModel(Model model){
         List<CategoryDto> categories = categoryService.findAllCategories();
         model.addAttribute("categories",categories);
-        List<WorkingTime> workingTimeList = Arrays.stream(WorkingTime.values()).toList();
+        List<WorkingTime> workingTimeList = Arrays.stream(WorkingTime.values()).collect(Collectors.toList());
         model.addAttribute("workingTimeList",workingTimeList);
 
         EduWorkAdSaveDto adSaveDto = new EduWorkAdSaveDto();

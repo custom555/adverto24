@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -45,7 +46,7 @@ public class TelephoneAdService {
     private List<TelephoneAdDto> mapToDto(Collection<TelephoneAd> collection){
         return collection.stream()
                 .map(TelephoneAdDtoMapper::toDto)
-                .toList();
+                .collect(Collectors.toList());
     }
     private Set<TelephoneAd> stateSearch(State state){
         if(state != null) {

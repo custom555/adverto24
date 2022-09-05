@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -56,7 +57,7 @@ public class ToolAdService {
     private List<ToolAdDto> mapToDto(Collection<ToolAd> collection){
         return collection.stream()
                 .map(ToolAdDtoMapper::toDto)
-                .toList();
+                .collect(Collectors.toList());
     }
     private Set<ToolAd> stateSearch(State state){
         if(state != null) {

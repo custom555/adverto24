@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -47,7 +48,7 @@ public class AudioAdService {
     private List<AudioAdDto> mapToDto(Collection<AudioAd> collection){
         return collection.stream()
                 .map(AudioAdDtoMapper::toDto)
-                .toList();
+                .collect(Collectors.toList());
     }
     private Set<AudioAd> stateSearch(State state){
         if(state != null) {

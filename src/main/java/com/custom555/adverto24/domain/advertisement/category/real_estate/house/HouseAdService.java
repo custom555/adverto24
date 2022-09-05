@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -53,7 +54,7 @@ public class HouseAdService {
     private List<HouseAdDto> mapToDto(Collection<HouseAd> collection){
         return collection.stream()
                 .map(HouseAdDtoMapper::toDto)
-                .toList();
+                .collect(Collectors.toList());
     }
     private Set<HouseAd> areaSearch(Integer areaBottom, Integer areaTop){
         if(areaBottom != null & areaTop != null){

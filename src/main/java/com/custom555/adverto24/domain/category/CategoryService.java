@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -14,6 +15,6 @@ public class CategoryService {
     public List<CategoryDto> findAllCategories(){
         return categoryRepository.findAll().stream()
                 .map(CategoryDtoMapper::toDto)
-                .toList();
+                .collect(Collectors.toList());
     }
 }

@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -46,7 +47,7 @@ public class EduWorkAdService {
     private List<EduWorkAdDto> mapToDto(Collection<EduWorkAd> collection){
         return collection.stream()
                 .map(EduWorkAdDtoMapper::toDto)
-                .toList();
+                .collect(Collectors.toList());
     }
     private Set<EduWorkAd> workingTimeSearch(WorkingTime workingTime){
         if(workingTime != null) {
